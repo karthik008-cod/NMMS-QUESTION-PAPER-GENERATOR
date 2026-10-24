@@ -1,0 +1,57 @@
+# Byte-compiled / optimized files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Output directories & dynamic runtime data
+NMMS/output/
+output/
+test_outputs/
+tmp*/
+pdf_preview/
+diag_crops/
+*.log
+
+# Test-generated PDFs and previews in root
+NMMS_Mental_Ability_Grand_Test_*.pdf
+NMMS_Physics_Grand_Test_*.pdf
+*.png
+*.jpg
+*.jpeg
+*.tmp
+
+# Scratch scripts & non-generator data
+build_physics_180_pdf.py
+create_generator.py
+physics_180_data_part1.py
+physics_180_data_part2.py
+physics_180_data_part3.py
+
+# Personal & school documents (do not commit to GitHub)
+*.pdf
+*.docx
+*.DOCX
+*.xlsx
+*.pptx
+*.mp4
+*.jpeg
+*.jpg
+MATHEMATICS/
+New folder/
+NMMS/TEXT BOOKS/
+NMMS/bio/
+NMMS/test_diagrams/
+NMMS/test_figs/
+
+# OS specific files
+Thumbs.db
+Desktop.ini
+.DS_Store

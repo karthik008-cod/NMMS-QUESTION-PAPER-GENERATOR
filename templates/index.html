@@ -1,0 +1,1461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NMMS Mental Ability Test Paper Generator</title>
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --primary-light: #3b82f6;
+            --primary-dark: #172554;
+            --secondary: #0d9488;
+            --accent: #f59e0b;
+            --danger: #ef4444;
+            --success: #10b981;
+            --bg-main: #f8fafc;
+            --bg-card: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --border-hover: #cbd5e1;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.5;
+            padding-bottom: 60px;
+        }
+
+        /* Top Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 40;
+        }
+
+        .header-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .header-title h1 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+        }
+
+        .header-title p {
+            font-size: 0.9rem;
+            color: #bfdbfe;
+            margin-top: 0.2rem;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        /* Layout Container */
+        .container {
+            max-width: 1300px;
+            margin: 1.5rem auto;
+            padding: 0 1rem;
+        }
+
+        /* Controls / Customization Card */
+        .card {
+            background: var(--bg-card);
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .card-header h2 {
+            font-size: 1.2rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .grid-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+
+        .form-group label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .form-control {
+            padding: 0.6rem 0.8rem;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            background: white;
+            font-size: 0.95rem;
+            color: var(--text-main);
+            transition: border-color 0.15s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-light);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 0.65rem 1.25rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: var(--primary-light);
+        }
+
+        .btn-create {
+            background-color: #15803d;
+            color: white;
+            font-size: 1.05rem;
+            padding: 0.75rem 1.5rem;
+            box-shadow: 0 2px 4px rgba(21, 128, 61, 0.2);
+        }
+        .btn-create:hover {
+            background-color: #16a34a;
+            transform: translateY(-1px);
+        }
+
+        .btn-finalize {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+            color: white;
+            font-size: 1.05rem;
+            padding: 0.75rem 1.5rem;
+            box-shadow: 0 4px 6px rgba(37, 99, 235, 0.25);
+        }
+        .btn-finalize:hover {
+            background: linear-gradient(135deg, #172554 0%, #1d4ed8 100%);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background-color: #f1f5f9;
+            color: var(--text-main);
+            border: 1px solid var(--border);
+        }
+        .btn-secondary:hover {
+            background-color: #e2e8f0;
+        }
+
+        .btn-regen {
+            background-color: #fef3c7;
+            color: #b45309;
+            border: 1px solid #fde68a;
+            font-size: 0.8rem;
+            padding: 0.35rem 0.75rem;
+            border-radius: 4px;
+        }
+        .btn-regen:hover {
+            background-color: #fde68a;
+        }
+
+        .btn-edit {
+            background-color: #e0f2fe;
+            color: #0369a1;
+            border: 1px solid #bae6fd;
+            font-size: 0.8rem;
+            padding: 0.35rem 0.75rem;
+            border-radius: 4px;
+        }
+        .btn-edit:hover {
+            background-color: #bae6fd;
+        }
+
+        .btn-save {
+            background-color: #dcfce7;
+            color: #15803d;
+            border: 1px solid #bbf7d0;
+            font-size: 0.8rem;
+            padding: 0.35rem 0.75rem;
+            border-radius: 4px;
+        }
+        .btn-save:hover {
+            background-color: #bbf7d0;
+        }
+
+        .btn-cancel {
+            background-color: #fee2e2;
+            color: #b91c1c;
+            border: 1px solid #fecaca;
+            font-size: 0.8rem;
+            padding: 0.35rem 0.75rem;
+            border-radius: 4px;
+        }
+        .btn-cancel:hover {
+            background-color: #fecaca;
+        }
+
+        /* Blueprint Accordion / Table */
+        .blueprint-details {
+            margin-top: 1rem;
+            background: #f8fafc;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+
+        .blueprint-summary {
+            padding: 0.75rem 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f1f5f9;
+        }
+
+        .blueprint-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+
+        .blueprint-table th, .blueprint-table td {
+            padding: 0.5rem 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .blueprint-table th {
+            background: #e2e8f0;
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        .blueprint-table tr:hover {
+            background-color: #f8fafc;
+        }
+
+        /* Sticky Action Bar when Paper is Ready */
+        .action-bar {
+            background: white;
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .paper-meta {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .badge-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .pill-blue { background: #dbeafe; color: #1e40af; }
+        .pill-green { background: #dcfce7; color: #15803d; }
+        .pill-amber { background: #fef3c7; color: #b45309; }
+
+        /* Section Navigation Bar */
+        .section-nav-wrapper {
+            margin-bottom: 1.5rem;
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            flex-wrap: wrap;
+            background: white;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .section-nav-wrapper select, .section-nav-wrapper input {
+            padding: 0.4rem 0.7rem;
+            font-size: 0.85rem;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+        }
+
+        /* Question Cards */
+        .question-card {
+            background: var(--bg-card);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            margin-bottom: 1rem;
+            padding: 1rem 1.25rem;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .question-card:hover {
+            border-color: #cbd5e1;
+            box-shadow: var(--shadow);
+        }
+
+        .card-updated {
+            animation: flashHighlight 1.5s ease-out;
+        }
+
+        @keyframes flashHighlight {
+            0% { box-shadow: 0 0 0 3px #10b981; }
+            100% { box-shadow: var(--shadow-sm); }
+        }
+
+        .section-banner {
+            background: linear-gradient(90deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            padding: 0.6rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .btn-sec-regen {
+            background: rgba(255, 255, 255, 0.22);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            font-size: 0.82rem;
+            font-weight: 600;
+            padding: 0.35rem 0.85rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+        .btn-sec-regen:hover {
+            background: white;
+            color: var(--primary);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            transform: translateY(-1px);
+        }
+
+        .directions-box {
+            background: #eff6ff;
+            border-left: 4px solid #3b82f6;
+            padding: 0.6rem 0.9rem;
+            font-size: 0.85rem;
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+            border-radius: 0 4px 4px 0;
+            font-style: italic;
+        }
+
+        .q-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px dashed var(--border);
+        }
+
+        .q-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background-color: var(--primary);
+            color: white;
+            font-weight: 700;
+            font-size: 0.9rem;
+            border-radius: 50%;
+        }
+
+        .q-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .q-stem {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 0.85rem;
+            line-height: 1.6;
+            color: var(--text-main);
+        }
+
+        .q-image-container {
+            text-align: center;
+            margin: 0.85rem 0;
+            background: #fbfcfe;
+            border: 1px solid var(--border);
+            padding: 0.75rem;
+            border-radius: 6px;
+        }
+
+        .q-image-container img {
+            max-width: 100%;
+            max-height: 260px;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+
+        /* Matrix Table Rendering */
+        .matrix-table {
+            margin: 0.75rem auto;
+            border-collapse: collapse;
+            font-family: monospace;
+            font-size: 1.1rem;
+        }
+
+        .matrix-table td {
+            border: 2px solid #334155;
+            padding: 0.5rem 0.9rem;
+            text-align: center;
+            min-width: 48px;
+            background: white;
+            font-weight: 600;
+        }
+
+        .matrix-table td.missing-cell {
+            background-color: #fef08a;
+            color: #854d0e;
+            font-weight: 700;
+        }
+
+        /* Options Grid */
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 0.6rem;
+            margin-top: 0.75rem;
+        }
+
+        .option-box {
+            padding: 0.6rem 0.8rem;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            background: #f8fafc;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.15s ease;
+        }
+
+        .option-box.correct {
+            background-color: #dcfce7;
+            border-color: #86efac;
+            color: #14532d;
+            font-weight: 600;
+        }
+
+        .option-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #e2e8f0;
+            font-size: 0.8rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .option-box.correct .option-num {
+            background: #22c55e;
+            color: white;
+        }
+
+        .option-img {
+            max-height: 44px;
+            max-width: 190px;
+            object-fit: contain;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+            padding: 2px 6px;
+            display: inline-block;
+        }
+
+        /* Explanation Toggle */
+        .explanation-details {
+            margin-top: 0.75rem;
+            background: #f8fafc;
+            border-radius: 6px;
+            padding: 0.5rem 0.75rem;
+            font-size: 0.85rem;
+            border: 1px solid var(--border);
+        }
+
+        .explanation-details summary {
+            cursor: pointer;
+            color: var(--primary-light);
+            font-weight: 600;
+        }
+
+        .explanation-content {
+            margin-top: 0.4rem;
+            color: #334155;
+            line-height: 1.5;
+        }
+
+        /* Editable Form Inside Card */
+        .edit-form {
+            display: none;
+            background: #f8fafc;
+            border: 1px dashed var(--primary-light);
+            padding: 1rem;
+            border-radius: 6px;
+            margin-top: 0.75rem;
+        }
+
+        .edit-form.active {
+            display: block;
+        }
+
+        .edit-form textarea {
+            width: 100%;
+            min-height: 70px;
+            padding: 0.5rem;
+            border-radius: 4px;
+            border: 1px solid var(--border);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .edit-options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Loading Overlay */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(4px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            color: white;
+            display: none;
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 5px solid rgba(255, 255, 255, 0.2);
+            border-top: 5px solid #38bdf8;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 1.25rem;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loading-msg {
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-align: center;
+            max-width: 450px;
+            line-height: 1.5;
+        }
+
+        /* Result Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(15, 23, 42, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 90;
+            display: none;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            max-width: 650px;
+            width: 90%;
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+        }
+
+        .modal-content h3 {
+            font-size: 1.5rem;
+            color: #15803d;
+            margin-bottom: 0.5rem;
+        }
+
+        .download-list {
+            margin: 1.5rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .download-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.85rem 1rem;
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 600;
+            transition: all 0.15s ease;
+        }
+
+        .download-item:hover {
+            background: #eff6ff;
+            border-color: #93c5fd;
+            transform: translateY(-1px);
+        }
+
+        .download-item .icon {
+            font-size: 1.4rem;
+        }
+
+        /* Floating Scroll to Top */
+        .scroll-top-btn {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            border: none;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            z-index: 35;
+        }
+        .scroll-top-btn:hover {
+            background: var(--primary-light);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="header-title">
+                <h1>NMMS Grand Test 180-Question Paper Generator</h1>
+                <p>National Means-cum-Merit Scholarship Mental Ability Test (MAT) • HD Diagrams • 2-Column Professional Format</p>
+            </div>
+            <div class="header-actions">
+                <button class="btn btn-create" onclick="generateNewPaper()">
+                    <span>🎲</span> Create New Paper
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container">
+        
+        <!-- Customization & Settings Panel -->
+        <div class="card">
+            <div class="card-header">
+                <h2><span>⚙️</span> Paper Configuration & Customization</h2>
+                <span class="badge-pill pill-blue">Full 180-Question Balanced Syllabus</span>
+            </div>
+
+            <div class="grid-controls">
+                <div class="form-group">
+                    <label for="test-num">Test Number</label>
+                    <input type="number" id="test-num" class="form-control" value="8" min="1" max="999">
+                </div>
+
+                <div class="form-group">
+                    <label for="custom-paper-code">Custom Paper Code (Optional)</label>
+                    <input type="text" id="custom-paper-code" class="form-control" placeholder="Auto: YYYYMMDD001">
+                </div>
+
+                <div class="form-group">
+                    <label for="total-q-count">Total Questions</label>
+                    <input type="text" id="total-q-count" class="form-control" value="180 Questions (Full Blueprint)" readonly>
+                </div>
+            </div>
+
+            <!-- Blueprint Accordion -->
+            <details class="blueprint-details">
+                <summary class="blueprint-summary">
+                    <span>📋 View All 25 MAT Categories & Question Counts</span>
+                    <span style="font-size:0.8rem; color:var(--text-muted);">Click to expand / collapse</span>
+                </summary>
+                <div style="max-height: 280px; overflow-y: auto;">
+                    <table class="blueprint-table" id="blueprint-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Section / Category Name</th>
+                                <th>Questions</th>
+                                <th>Count</th>
+                            </tr>
+                        </thead>
+                        <tbody id="blueprint-body">
+                            <!-- Populated dynamically from JSON -->
+                        </tbody>
+                    </table>
+                </div>
+            </details>
+        </div>
+
+        <!-- Sticky Status & Finalize Bar (Shows when questions loaded) -->
+        <div class="action-bar" id="paper-status-bar" style="display: none;">
+            <div class="paper-meta">
+                <span class="badge-pill pill-blue" id="disp-test-num">Test #8</span>
+                <span class="badge-pill pill-amber" id="disp-paper-code">Code: 20261024001</span>
+                <span class="badge-pill pill-green" id="disp-total-q">180 Questions Ready</span>
+            </div>
+            <div style="display: flex; gap: 0.75rem;">
+                <button class="btn btn-secondary" onclick="generateNewPaper()">
+                    <span>🔄</span> Regenerate Entire Paper
+                </button>
+                <button class="btn btn-finalize" onclick="finalizePaper()">
+                    <span>📄</span> Finalize This Paper (Build PDF)
+                </button>
+            </div>
+        </div>
+
+        <!-- Section Navigation & Filter -->
+        <div class="section-nav-wrapper" id="section-nav" style="display: none;">
+            <span style="font-weight:600; font-size:0.9rem;">Jump to Category:</span>
+            <select id="section-select" onchange="jumpToSection(this.value)">
+                <option value="all">-- Show All 25 Categories --</option>
+            </select>
+
+            <span style="margin-left:auto; font-weight:600; font-size:0.9rem;">Search:</span>
+            <input type="text" id="filter-input" placeholder="Search question text..." oninput="filterQuestions(this.value)">
+        </div>
+
+        <!-- Questions List Container -->
+        <div id="questions-container">
+            <!-- Question cards will be dynamically injected here -->
+        </div>
+
+        <!-- Bottom Finalize Button -->
+        <div id="bottom-finalize-bar" style="display: none; text-align: center; margin: 2rem 0;">
+            <button class="btn btn-finalize" style="font-size: 1.15rem; padding: 0.9rem 2.2rem;" onclick="finalizePaper()">
+                <span>📄</span> Confirm & Finalize This Paper (Generate Formatted 2-Column PDF)
+            </button>
+        </div>
+
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="spinner"></div>
+        <div class="loading-msg" id="loading-text">
+            Generating 180 Questions & Rendering HD Diagrams...<br>
+            <span style="font-size:0.9rem; font-weight:400; opacity:0.85;">This will take approximately 10-20 seconds.</span>
+        </div>
+    </div>
+
+    <!-- Finalize Download Modal -->
+    <div class="modal" id="download-modal">
+        <div class="modal-content">
+            <h3>🎉 Paper Finalized Successfully!</h3>
+            <p style="color:var(--text-muted); font-size:0.95rem;">
+                Your 180-Question Grand Test has been formatted with the standard 2-column layout and central dividing line.
+            </p>
+
+            <div class="download-list">
+                <a id="link-qp" href="#" class="download-item" download>
+                    <div style="display:flex; align-items:center; gap:0.75rem;">
+                        <span class="icon">📋</span>
+                        <div style="text-align:left;">
+                            <div style="color:var(--primary);">Question Paper (Only)</div>
+                            <small style="color:var(--text-muted);" id="qp-pages-label">7 Pages • 2-Column Layout</small>
+                        </div>
+                    </div>
+                    <span class="btn btn-primary" style="font-size:0.8rem; padding:0.4rem 0.8rem;">Download PDF</span>
+                </a>
+
+                <a id="link-key" href="#" class="download-item" download>
+                    <div style="display:flex; align-items:center; gap:0.75rem;">
+                        <span class="icon">📝</span>
+                        <div style="text-align:left;">
+                            <div style="color:var(--primary);">Answer Key & Detailed Explanations</div>
+                            <small style="color:var(--text-muted);" id="key-pages-label">7 Pages • Step-by-Step Solutions</small>
+                        </div>
+                    </div>
+                    <span class="btn btn-primary" style="font-size:0.8rem; padding:0.4rem 0.8rem;">Download PDF</span>
+                </a>
+
+                <a id="link-comp" href="#" class="download-item" download>
+                    <div style="display:flex; align-items:center; gap:0.75rem;">
+                        <span class="icon">📚</span>
+                        <div style="text-align:left;">
+                            <div style="color:var(--primary);">Complete Master Booklet</div>
+                            <small style="color:var(--text-muted);" id="comp-pages-label">14 Pages • Combined QP + Solutions</small>
+                        </div>
+                    </div>
+                    <span class="btn btn-primary" style="font-size:0.8rem; padding:0.4rem 0.8rem;">Download PDF</span>
+                </a>
+            </div>
+
+            <button class="btn btn-secondary" onclick="closeModal()">Close Window</button>
+        </div>
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top-btn" id="scrollTopBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        ↑
+    </button>
+
+    <script>
+        // Injected Blueprint Data
+        const BLUEPRINT = {{ blueprint_json | safe }};
+        let currentQuestions = [];
+        let currentPaperCode = "";
+        let currentTestNum = 8;
+
+        // Initialize Blueprint Table
+        function initBlueprint() {
+            const tbody = document.getElementById('blueprint-body');
+            const select = document.getElementById('section-select');
+            tbody.innerHTML = '';
+            
+            BLUEPRINT.forEach(sec => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td><strong>${sec.sec_num}</strong></td>
+                    <td>${sec.name}</td>
+                    <td>${sec.q_range}</td>
+                    <td><span class="badge-pill pill-blue">${sec.count} Qs</span></td>
+                `;
+                tbody.appendChild(tr);
+
+                const opt = document.createElement('option');
+                opt.value = `sec-${sec.sec_num}`;
+                opt.textContent = `Sec ${sec.sec_num}: ${sec.name} (Q${sec.q_range})`;
+                select.appendChild(opt);
+            });
+        }
+
+        // Generate Entire Paper
+        async function generateNewPaper() {
+            const testNum = document.getElementById('test-num').value || 8;
+            const customCode = document.getElementById('custom-paper-code').value.trim();
+
+            showLoading("Generating 180 questions with HD diagrams...<br><span style='font-size:0.9rem; font-weight:400;'>Rendering dice, clocks, matrices, reflections and non-verbal figures...</span>");
+
+            try {
+                const response = await fetch('/generate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        test_num: parseInt(testNum),
+                        paper_code: customCode
+                    })
+                });
+
+                const data = await response.json();
+                if (data.error) {
+                    alert("Error generating questions: " + data.error);
+                    return;
+                }
+
+                currentQuestions = data.questions;
+                currentPaperCode = data.paper_code;
+                currentTestNum = data.test_num;
+
+                renderAllQuestions();
+                updateStatusBar();
+
+            } catch (err) {
+                alert("Generation request failed: " + err.message);
+            } finally {
+                hideLoading();
+            }
+        }
+
+        // Render Question List
+        function renderAllQuestions() {
+            const container = document.getElementById('questions-container');
+            container.innerHTML = '';
+
+            currentQuestions.forEach((q, idx) => {
+                const card = document.createElement('div');
+                card.className = 'question-card';
+                card.id = `q-card-${q.q_num}`;
+
+                // Check if this starts a new section
+                let sectionBannerHtml = '';
+                if (q.section_name) {
+                    // Extract section number from section_name e.g. "SECTION 1: NUMBER SERIES"
+                    const secMatch = q.section_name.match(/SECTION\s+(\d+)/i);
+                    const secNum = secMatch ? parseInt(secMatch[1]) : 1;
+                    const secId = `sec-${secNum}`;
+                    sectionBannerHtml = `
+                        <div class="section-banner" id="${secId}">
+                            <div style="display:flex; align-items:center; gap:0.6rem;">
+                                <span class="badge-pill" style="background:rgba(255,255,255,0.25); color:white; font-size:0.75rem;">SEC ${secNum}</span>
+                                <span>${q.section_name}</span>
+                            </div>
+                            <button class="btn-sec-regen" id="btn-sec-regen-${secNum}" onclick="regenerateEntireSection(${secNum})">
+                                🔄 Regenerate Entire Section ${secNum}
+                            </button>
+                        </div>
+                    `;
+                }
+
+                let directionsHtml = '';
+                if (q.directions) {
+                    directionsHtml = `
+                        <div class="directions-box">
+                            <strong>Directions:</strong> ${q.directions}
+                        </div>
+                    `;
+                }
+
+                // Image HTML
+                let imageHtml = '';
+                if (q.image_url) {
+                    const sep = q.image_url.includes('?') ? '&' : '?';
+                    imageHtml = `
+                        <div class="q-image-container">
+                            <img src="${q.image_url}${sep}t=${Date.now()}" alt="Question Figure" loading="lazy">
+                        </div>
+                    `;
+                }
+
+                // Matrix Table HTML
+                let matrixHtml = '';
+                if (q.matrix_data && Array.isArray(q.matrix_data)) {
+                    matrixHtml = '<table class="matrix-table">';
+                    q.matrix_data.forEach(row => {
+                        matrixHtml += '<tr>';
+                        row.forEach(cell => {
+                            const isMissing = cell.toString().trim() === '?';
+                            matrixHtml += `<td class="${isMissing ? 'missing-cell' : ''}">${cell}</td>`;
+                        });
+                        matrixHtml += '</tr>';
+                    });
+                    matrixHtml += '</table>';
+                }
+
+                // Options HTML
+                let optionsHtml = '<div class="options-grid">';
+                q.options.forEach((opt, optIdx) => {
+                    const optNum = optIdx + 1;
+                    const isCorrect = (optNum === q.correct_opt);
+                    const optImgUrl = (q.option_image_urls && q.option_image_urls[optIdx]) ? q.option_image_urls[optIdx] : null;
+                    optionsHtml += `
+                        <div class="option-box ${isCorrect ? 'correct' : ''}">
+                            <span class="option-num">(${optNum})</span>
+                            ${optImgUrl ? `<img src="${optImgUrl}" class="option-img" alt="Option ${optNum}">` : ''}
+                            ${opt ? `<span class="option-text">${opt}</span>` : ''}
+                        </div>
+                    `;
+                });
+                optionsHtml += '</div>';
+
+                // Explanation
+                let explanationHtml = '';
+                if (q.explanation) {
+                    explanationHtml = `
+                        <details class="explanation-details">
+                            <summary>💡 View Step-by-Step Explanation</summary>
+                            <div class="explanation-content">${q.explanation}</div>
+                        </details>
+                    `;
+                }
+
+                // Editable inline form
+                const editFormHtml = `
+                    <div class="edit-form" id="edit-form-${q.q_num}">
+                        <label style="font-weight:600; font-size:0.85rem;">Question Stem / Text:</label>
+                        <textarea id="edit-stem-${q.q_num}">${q.stem}</textarea>
+
+                        <label style="font-weight:600; font-size:0.85rem;">Options:</label>
+                        <div class="edit-options-grid">
+                            <input type="text" id="edit-opt-1-${q.q_num}" class="form-control" value="${q.options[0] || ''}">
+                            <input type="text" id="edit-opt-2-${q.q_num}" class="form-control" value="${q.options[1] || ''}">
+                            <input type="text" id="edit-opt-3-${q.q_num}" class="form-control" value="${q.options[2] || ''}">
+                            <input type="text" id="edit-opt-4-${q.q_num}" class="form-control" value="${q.options[3] || ''}">
+                        </div>
+
+                        <div style="display:flex; gap:1rem; align-items:center; margin-bottom:0.75rem;">
+                            <label style="font-weight:600; font-size:0.85rem;">Correct Option (1-4):</label>
+                            <select id="edit-correct-${q.q_num}" class="form-control" style="width:90px;">
+                                <option value="1" ${q.correct_opt === 1 ? 'selected' : ''}>1</option>
+                                <option value="2" ${q.correct_opt === 2 ? 'selected' : ''}>2</option>
+                                <option value="3" ${q.correct_opt === 3 ? 'selected' : ''}>3</option>
+                                <option value="4" ${q.correct_opt === 4 ? 'selected' : ''}>4</option>
+                            </select>
+                        </div>
+
+                        <label style="font-weight:600; font-size:0.85rem;">Explanation:</label>
+                        <textarea id="edit-exp-${q.q_num}">${q.explanation || ''}</textarea>
+
+                        <div style="display:flex; gap:0.5rem; justify-content:flex-end;">
+                            <button class="btn btn-cancel" onclick="toggleEdit(${q.q_num})">Cancel</button>
+                            <button class="btn btn-save" onclick="saveQuestionEdit(${q.q_num})">💾 Save Changes</button>
+                        </div>
+                    </div>
+                `;
+
+                card.innerHTML = `
+                    ${sectionBannerHtml}
+                    ${directionsHtml}
+                    <div class="q-header">
+                        <div style="display:flex; align-items:center; gap:0.75rem;">
+                            <span class="q-badge">${q.q_num}</span>
+                            <span style="font-weight:600; font-size:0.9rem; color:var(--text-muted);">Question ${q.q_num} of 180</span>
+                        </div>
+                        <div class="q-actions">
+                            <button class="btn btn-edit" onclick="toggleEdit(${q.q_num})">✏️ Modify</button>
+                            <button class="btn btn-regen" id="btn-regen-${q.q_num}" onclick="regenerateSingleQuestion(${q.q_num})">${getRegenButtonLabel(q.q_num)}</button>
+                        </div>
+                    </div>
+
+                    <div class="q-body" id="q-body-${q.q_num}">
+                        <div class="q-stem">${q.stem}</div>
+                        ${imageHtml}
+                        ${matrixHtml}
+                        ${optionsHtml}
+                        ${explanationHtml}
+                    </div>
+
+                    ${editFormHtml}
+                `;
+
+                container.appendChild(card);
+            });
+
+            document.getElementById('paper-status-bar').style.display = 'flex';
+            document.getElementById('section-nav').style.display = 'flex';
+            document.getElementById('bottom-finalize-bar').style.display = 'block';
+        }
+
+        // Toggle Edit Form
+        function toggleEdit(qNum) {
+            const form = document.getElementById(`edit-form-${qNum}`);
+            const body = document.getElementById(`q-body-${qNum}`);
+            if (form.classList.contains('active')) {
+                form.classList.remove('active');
+                body.style.display = 'block';
+            } else {
+                form.classList.add('active');
+                body.style.display = 'none';
+            }
+        }
+
+        // Save Question Edit to Server
+        async function saveQuestionEdit(qNum) {
+            const stem = document.getElementById(`edit-stem-${qNum}`).value;
+            const opt1 = document.getElementById(`edit-opt-1-${qNum}`).value;
+            const opt2 = document.getElementById(`edit-opt-2-${qNum}`).value;
+            const opt3 = document.getElementById(`edit-opt-3-${qNum}`).value;
+            const opt4 = document.getElementById(`edit-opt-4-${qNum}`).value;
+            const correctOpt = parseInt(document.getElementById(`edit-correct-${qNum}`).value);
+            const exp = document.getElementById(`edit-exp-${qNum}`).value;
+
+            try {
+                const response = await fetch(`/update_question/${qNum}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        stem: stem,
+                        options: [opt1, opt2, opt3, opt4],
+                        correct_opt: correctOpt,
+                        explanation: exp
+                    })
+                });
+
+                const data = await response.json();
+                if (data.status === 'success') {
+                    // Update local state
+                    currentQuestions[qNum - 1] = data.question;
+                    refreshSingleQuestionCard(qNum, data.question);
+                    toggleEdit(qNum);
+                    highlightCard(qNum);
+                } else {
+                    alert("Failed to save edit: " + (data.error || "Unknown error"));
+                }
+            } catch (err) {
+                alert("Error saving: " + err.message);
+            }
+        }
+
+        function getRegenButtonLabel(qNum) {
+            if (qNum >= 131 && qNum <= 134) return '🔄 Regenerate Venn Group (131-134)';
+            if (qNum >= 135 && qNum <= 138) return '🔄 Regenerate Survey Group (135-138)';
+            if (qNum >= 155 && qNum <= 160) return '🔄 Regenerate Cubes Group (155-160)';
+            return '🔄 Regenerate';
+        }
+
+        // Regenerate Single Question (or its connected group)
+        async function regenerateSingleQuestion(qNum) {
+            const btn = document.getElementById(`btn-regen-${qNum}`);
+            const originalText = btn ? btn.innerHTML : '🔄 Regenerate';
+            if (btn) {
+                btn.innerHTML = '⏳ Working...';
+                btn.disabled = true;
+            }
+
+            try {
+                const response = await fetch(`/regenerate/${qNum}`, {
+                    method: 'POST'
+                });
+
+                const data = await response.json();
+                if (data.status === 'success') {
+                    if (data.is_group && Array.isArray(data.questions)) {
+                        // Connected group (e.g. Venn Q131-134, Survey Venn Q135-138, Cubes Q155-160)
+                        data.questions.forEach(q => {
+                            currentQuestions[q.q_num - 1] = q;
+                            refreshSingleQuestionCard(q.q_num, q);
+                            highlightCard(q.q_num);
+                        });
+                    } else if (data.question) {
+                        currentQuestions[qNum - 1] = data.question;
+                        refreshSingleQuestionCard(qNum, data.question);
+                        highlightCard(qNum);
+                    }
+                } else {
+                    alert("Error regenerating: " + (data.error || "Failed"));
+                }
+            } catch (err) {
+                alert("Regenerate failed: " + err.message);
+            } finally {
+                if (btn) {
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                }
+            }
+        }
+
+        // Regenerate Entire Section (All Questions in Section)
+        async function regenerateEntireSection(secNum) {
+            const btn = document.getElementById(`btn-sec-regen-${secNum}`);
+            const originalText = btn ? btn.innerHTML : '🔄 Regenerate Entire Section';
+            if (btn) {
+                btn.innerHTML = '⏳ Regenerating Section...';
+                btn.disabled = true;
+            }
+
+            try {
+                const response = await fetch(`/regenerate_section/${secNum}`, {
+                    method: 'POST'
+                });
+
+                const data = await response.json();
+                if (data.status === 'success' && Array.isArray(data.questions)) {
+                    data.questions.forEach(q => {
+                        currentQuestions[q.q_num - 1] = q;
+                        refreshSingleQuestionCard(q.q_num, q);
+                        highlightCard(q.q_num);
+                    });
+                } else {
+                    alert("Error regenerating section: " + (data.error || "Failed"));
+                }
+            } catch (err) {
+                alert("Section regenerate failed: " + err.message);
+            } finally {
+                if (btn) {
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                }
+            }
+        }
+
+        // Refresh Question Card DOM
+        function refreshSingleQuestionCard(qNum, q) {
+            const body = document.getElementById(`q-body-${qNum}`);
+            if (!body) return;
+
+            let imageHtml = '';
+            if (q.image_url) {
+                const sep = q.image_url.includes('?') ? '&' : '?';
+                imageHtml = `
+                    <div class="q-image-container">
+                        <img src="${q.image_url}${sep}t=${Date.now()}" alt="Question Figure" loading="lazy">
+                    </div>
+                `;
+            }
+
+            let matrixHtml = '';
+            if (q.matrix_data && Array.isArray(q.matrix_data)) {
+                matrixHtml = '<table class="matrix-table">';
+                q.matrix_data.forEach(row => {
+                    matrixHtml += '<tr>';
+                    row.forEach(cell => {
+                        const isMissing = cell.toString().trim() === '?';
+                        matrixHtml += `<td class="${isMissing ? 'missing-cell' : ''}">${cell}</td>`;
+                    });
+                    matrixHtml += '</tr>';
+                });
+                matrixHtml += '</table>';
+            }
+
+            let optionsHtml = '<div class="options-grid">';
+            q.options.forEach((opt, optIdx) => {
+                const optNum = optIdx + 1;
+                const isCorrect = (optNum === q.correct_opt);
+                const optImgUrl = (q.option_image_urls && q.option_image_urls[optIdx]) ? q.option_image_urls[optIdx] : null;
+                optionsHtml += `
+                    <div class="option-box ${isCorrect ? 'correct' : ''}">
+                        <span class="option-num">(${optNum})</span>
+                        ${optImgUrl ? `<img src="${optImgUrl}" class="option-img" alt="Option ${optNum}">` : ''}
+                        ${opt ? `<span class="option-text">${opt}</span>` : ''}
+                    </div>
+                `;
+            });
+            optionsHtml += '</div>';
+
+            let explanationHtml = '';
+            if (q.explanation) {
+                explanationHtml = `
+                    <details class="explanation-details">
+                        <summary>💡 View Step-by-Step Explanation</summary>
+                        <div class="explanation-content">${q.explanation}</div>
+                    </details>
+                `;
+            }
+
+            body.innerHTML = `
+                <div class="q-stem">${q.stem}</div>
+                ${imageHtml}
+                ${matrixHtml}
+                ${optionsHtml}
+                ${explanationHtml}
+            `;
+
+            // Also update inputs in edit form
+            const editStem = document.getElementById(`edit-stem-${qNum}`);
+            if (editStem) editStem.value = q.stem;
+            for (let i = 1; i <= 4; i++) {
+                const optInput = document.getElementById(`edit-opt-${i}-${qNum}`);
+                if (optInput && q.options[i - 1]) optInput.value = q.options[i - 1];
+            }
+            const editCorrect = document.getElementById(`edit-correct-${qNum}`);
+            if (editCorrect) editCorrect.value = q.correct_opt;
+            const editExp = document.getElementById(`edit-exp-${qNum}`);
+            if (editExp) editExp.value = q.explanation || '';
+        }
+
+        function highlightCard(qNum) {
+            const card = document.getElementById(`q-card-${qNum}`);
+            if (card) {
+                card.classList.remove('card-updated');
+                void card.offsetWidth; // trigger reflow
+                card.classList.add('card-updated');
+            }
+        }
+
+        // Finalize Paper and Generate PDFs
+        async function finalizePaper() {
+            showLoading("Assembling Professional 2-Column PDF Documents...<br><span style='font-size:0.9rem; font-weight:400;'>Formatting Question Paper, Answer Key, and Master Booklet with central dividing line...</span>");
+
+            try {
+                const response = await fetch('/finalize', {
+                    method: 'POST'
+                });
+
+                const data = await response.json();
+                if (data.status === 'success') {
+                    // Populate modal links
+                    document.getElementById('link-qp').href = data.qp.url;
+                    document.getElementById('link-key').href = data.key.url;
+                    document.getElementById('link-comp').href = data.complete.url;
+
+                    document.getElementById('qp-pages-label').textContent = `${data.qp.pages} Pages • 2-Column Question Paper`;
+                    document.getElementById('key-pages-label').textContent = `${data.key.pages} Pages • Key & Explanations`;
+                    document.getElementById('comp-pages-label').textContent = `${data.complete.pages} Pages • Master Combined Booklet`;
+
+                    document.getElementById('download-modal').style.display = 'flex';
+                } else {
+                    alert("Error finalizing paper: " + (data.error || "Failed"));
+                }
+            } catch (err) {
+                alert("Finalize request failed: " + err.message);
+            } finally {
+                hideLoading();
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('download-modal').style.display = 'none';
+        }
+
+        function updateStatusBar() {
+            document.getElementById('disp-test-num').textContent = `Test #${currentTestNum}`;
+            document.getElementById('disp-paper-code').textContent = `Code: ${currentPaperCode}`;
+            document.getElementById('disp-total-q').textContent = `${currentQuestions.length} Questions Ready`;
+        }
+
+        function jumpToSection(val) {
+            if (val === 'all') return;
+            const target = document.getElementById(val);
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        function filterQuestions(query) {
+            const q = query.toLowerCase().trim();
+            currentQuestions.forEach(item => {
+                const card = document.getElementById(`q-card-${item.q_num}`);
+                if (!card) return;
+                if (!q) {
+                    card.style.display = 'block';
+                    return;
+                }
+                const match = item.stem.toLowerCase().includes(q) ||
+                              item.q_num.toString() === q ||
+                              (item.section_name && item.section_name.toLowerCase().includes(q)) ||
+                              item.options.some(opt => opt.toLowerCase().includes(q));
+                card.style.display = match ? 'block' : 'none';
+            });
+        }
+
+        function showLoading(msg) {
+            const overlay = document.getElementById('loading-overlay');
+            const text = document.getElementById('loading-text');
+            text.innerHTML = msg;
+            overlay.style.display = 'flex';
+        }
+
+        function hideLoading() {
+            document.getElementById('loading-overlay').style.display = 'none';
+        }
+
+        // Check if there is an active paper in memory on initial page load
+        async function checkCurrentPaper() {
+            try {
+                const res = await fetch('/current_paper');
+                const data = await res.json();
+                if (data.loaded && data.questions && data.questions.length > 0) {
+                    currentQuestions = data.questions;
+                    currentPaperCode = data.paper_code;
+                    currentTestNum = data.test_num;
+                    document.getElementById('test-num').value = currentTestNum;
+                    renderAllQuestions();
+                    updateStatusBar();
+                }
+            } catch (e) {
+                console.log("No previous paper in session");
+            }
+        }
+
+        // Scroll Top button listener
+        window.addEventListener('scroll', () => {
+            const btn = document.getElementById('scrollTopBtn');
+            if (window.scrollY > 400) {
+                btn.style.display = 'flex';
+            } else {
+                btn.style.display = 'none';
+            }
+        });
+
+        // Initialize on load
+        window.onload = function() {
+            initBlueprint();
+            checkCurrentPaper();
+        };
+    </script>
+</body>
+</html>

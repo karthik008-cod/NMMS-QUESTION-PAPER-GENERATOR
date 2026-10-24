@@ -1,0 +1,815 @@
+{
+  "paper_folding": {
+    "pfc_center_square": {
+      "last_used_test": 10,
+      "usage_count": 13,
+      "last_time": 1792832447.1173842
+    },
+    "pfc_crease_semicircles": {
+      "last_used_test": 10,
+      "usage_count": 13,
+      "last_time": 1792832447.1173842
+    },
+    "pfc_circular_sheet_8_holes": {
+      "last_used_test": 44,
+      "usage_count": 9,
+      "last_time": 1792832487.8324008
+    },
+    "pfc_center_circle": {
+      "last_used_test": 44,
+      "usage_count": 9,
+      "last_time": 1792832487.8324008
+    },
+    "pfc_outer_corners_circle": {
+      "last_used_test": 43,
+      "usage_count": 4,
+      "last_time": 1792832459.034189
+    },
+    "pfc_horizontal_crease_diamond": {
+      "last_used_test": 9,
+      "usage_count": 19,
+      "last_time": 1792845640.1452706
+    },
+    "pfc_double_vertical_holes": {
+      "last_used_test": 10,
+      "usage_count": 13,
+      "last_time": 1792832447.1173842
+    },
+    "pfc_vertical_crease_diamond": {
+      "last_used_test": 43,
+      "usage_count": 4,
+      "last_time": 1792832459.034189
+    },
+    "pfc_dual_crease_diamonds": {
+      "last_used_test": 44,
+      "usage_count": 9,
+      "last_time": 1792832487.8324008
+    },
+    "pfc_center_diamond_plus_4_holes": {
+      "last_used_test": 43,
+      "usage_count": 3,
+      "last_time": 1792832459.034189
+    },
+    "pfc_transparent_sheet_fold": {
+      "last_used_test": 44,
+      "usage_count": 9,
+      "last_time": 1792832487.8324008
+    },
+    "pfc_diagonal_double_holes": {
+      "last_used_test": 9,
+      "usage_count": 19,
+      "last_time": 1792845640.1452706
+    },
+    "pfc_single_hole_quarter": {
+      "last_used_test": 9,
+      "usage_count": 19,
+      "last_time": 1792845640.1452706
+    },
+    "pfc_center_square_plus_4_holes": {
+      "last_used_test": 10,
+      "usage_count": 13,
+      "last_time": 1792832447.1173842
+    },
+    "pfc_center_diamond": {
+      "last_used_test": 43,
+      "usage_count": 3,
+      "last_time": 1792832459.034189
+    },
+    "pfc_outer_corners_tri": {
+      "last_used_test": 9,
+      "usage_count": 19,
+      "last_time": 1792845640.1452706
+    }
+  },
+  "venn_geometric": {
+    "cricketers_footballers_hockey_tennis": {
+      "last_used_test": 8,
+      "usage_count": 6,
+      "last_time": 1792845578.9403334
+    },
+    "singers_actors_directors_producers": {
+      "last_used_test": 9,
+      "usage_count": 6,
+      "last_time": 1792833177.3173342
+    },
+    "artists_scientists_teachers_writers": {
+      "last_used_test": 10,
+      "usage_count": 3,
+      "last_time": 1792833103.3997788
+    },
+    "lawyers_judges_police_citizens": {
+      "last_used_test": 10,
+      "usage_count": 3,
+      "last_time": 1792832032.2266867
+    },
+    "urban_educated_hardworking_employed": {
+      "last_used_test": 9,
+      "usage_count": 6,
+      "last_time": 1792832356.0776114
+    },
+    "poets_novelists_painters_sculptors": {
+      "last_used_test": 10,
+      "usage_count": 3,
+      "last_time": 1792831317.4995236
+    },
+    "bankers_accountants_auditors_managers": {
+      "last_used_test": 9,
+      "usage_count": 6,
+      "last_time": 1792845636.1309223
+    },
+    "rural_literate_women_employed": {
+      "last_used_test": 9,
+      "usage_count": 4,
+      "last_time": 1792833100.021853
+    },
+    "engineers_doctors_farmers_leaders": {
+      "last_used_test": 10,
+      "usage_count": 1,
+      "last_time": 1792828561.2751474
+    },
+    "students_athletes_musicians_dancers": {
+      "last_used_test": 43,
+      "usage_count": 3,
+      "last_time": 1792832456.706508
+    },
+    "politicians_journalists_economists_historians": {
+      "last_used_test": 10,
+      "usage_count": 2,
+      "last_time": 1792832444.8444002
+    },
+    "chemists_physicists_biologists_mathematicians": {
+      "last_used_test": 44,
+      "usage_count": 3,
+      "last_time": 1792832485.3542633
+    }
+  },
+  "venn_survey": {
+    "languages_telugu_hindi_english": {
+      "last_used_test": 10,
+      "usage_count": 3,
+      "last_time": 1792832032.3120341
+    },
+    "college_teachers_researchers_phd": {
+      "last_used_test": 9,
+      "usage_count": 8,
+      "last_time": 1792845636.3398108
+    },
+    "musical_instruments_guitar_piano_drums": {
+      "last_used_test": 9,
+      "usage_count": 6,
+      "last_time": 1792833177.4036374
+    },
+    "newspaper_hindu_times_express": {
+      "last_used_test": 9,
+      "usage_count": 3,
+      "last_time": 1792832028.9149914
+    },
+    "science_athletes_ncc": {
+      "last_used_test": 10,
+      "usage_count": 3,
+      "last_time": 1792831317.5869129
+    },
+    "rural_computer_scholarship": {
+      "last_used_test": 44,
+      "usage_count": 3,
+      "last_time": 1792832485.4406369
+    },
+    "farmers_cotton_paddy_sugarcane": {
+      "last_used_test": 10,
+      "usage_count": 3,
+      "last_time": 1792833103.4866345
+    },
+    "beverages_tea_coffee_juice": {
+      "last_used_test": 9,
+      "usage_count": 6,
+      "last_time": 1792832356.1698558
+    },
+    "library_fiction_history_biography": {
+      "last_used_test": 10,
+      "usage_count": 1,
+      "last_time": 1792828561.283812
+    },
+    "vehicles_car_motorcycle_bicycle": {
+      "last_used_test": 43,
+      "usage_count": 3,
+      "last_time": 1792832456.8050506
+    },
+    "female_graduates_employed_loans": {
+      "last_used_test": 10,
+      "usage_count": 2,
+      "last_time": 1792832444.9289305
+    },
+    "examination_math_physics_chemistry": {
+      "last_used_test": 9,
+      "usage_count": 4,
+      "last_time": 1792833100.1012845
+    }
+  },
+  "mirror_words": {
+    "STATION": {
+      "last_used_test": 8,
+      "usage_count": 1,
+      "last_time": 1792831922.860194
+    },
+    "SAVANNA": {
+      "last_used_test": 8,
+      "usage_count": 1,
+      "last_time": 1792831923.0265353
+    },
+    "HYDROELECTRIC": {
+      "last_used_test": 8,
+      "usage_count": 1,
+      "last_time": 1792832026.372633
+    },
+    "ATMOSPHERE": {
+      "last_used_test": 8,
+      "usage_count": 1,
+      "last_time": 1792832026.5115497
+    },
+    "MASS": {
+      "last_used_test": 9,
+      "usage_count": 1,
+      "last_time": 1792832029.7782762
+    },
+    "HORMONES": {
+      "last_used_test": 9,
+      "usage_count": 1,
+      "last_time": 1792832029.9012918
+    },
+    "TSUNAMI": {
+      "last_used_test": 10,
+      "usage_count": 1,
+      "last_time": 1792832033.2235463
+    },
+    "PENINSULA": {
+      "last_used_test": 10,
+      "usage_count": 1,
+      "last_time": 1792832033.3700762
+    },
+    "HONESTY": {
+      "last_used_test": 8,
+      "usage_count": 1,
+      "last_time": 1792832057.10621
+    },
+    "AUTOMATION": {
+      "last_used_test": 8,
+      "usage_count": 1,
+      "last_time": 1792832057.2400594
+    },
+    "AMMETER": {
+      "last_used_test": 8,
+      "usage_count": 1,
+      "last_time": 1792832149.783476
+    },
+    "LAVA": {
+      "last_used_test": 8,
+      "usage_count": 1,
+      "last_time": 1792832149.903233
+    },
+    "TALENT": {
+      "last_used_test": 8,
+      "usage_count": 1,
+      "last_time": 1792832151.9162
+    },
+    "GLUCOSE": {
+      "last_used_test": 8,
+      "usage_count": 1,
+      "last_time": 1792832152.4593215
+    },
+    "AIRCRAFT": {
+      "last_used_test": 8,
+      "usage_count": 1,
+      "last_time": 1792832152.5902622
+    },
+    "SCHOLAR": {
+      "last_used_test": 9,
+      "usage_count": 1,
+      "last_time": 1792832357.2355835
+    },
+    "OMNIVORE": {
+      "last_used_test": 9,
+      "usage_count": 1,
+      "last_time": 1792832357.365169
+    },
+    "FISSION": {
+      "last_used_test": 10,
+      "usage_count": 1,
+      "last_time": 1792832445.9318585
+    },
+    "MANAGER": {
+      "last_used_test": 10,
+      "usage_count": 1,
+      "last_time": 1792832446.0765352
+    },
+    "TRIUMPH": {
+      "last_used_test": 43,
+      "usage_count": 1,
+      "last_time": 1792832457.7875817
+    },
+    "NUTRIENT": {
+      "last_used_test": 43,
+      "usage_count": 1,
+      "last_time": 1792832457.9416826
+    },
+    "VELOCITY": {
+      "last_used_test": 44,
+      "usage_count": 1,
+      "last_time": 1792832486.569511
+    },
+    "IRRIGATION": {
+      "last_used_test": 44,
+      "usage_count": 1,
+      "last_time": 1792832486.7237928
+    },
+    "WAVELENGTH": {
+      "last_used_test": 8,
+      "usage_count": 1,
+      "last_time": 1792833097.521794
+    },
+    "EARTHQUAKE": {
+      "last_used_test": 8,
+      "usage_count": 1,
+      "last_time": 1792833097.659319
+    },
+    "REPRODUCTION": {
+      "last_used_test": 9,
+      "usage_count": 1,
+      "last_time": 1792833100.9718113
+    },
+    "COLLEGE": {
+      "last_used_test": 9,
+      "usage_count": 1,
+      "last_time": 1792833101.126446
+    },
+    "PARALLEL": {
+      "last_used_test": 10,
+      "usage_count": 1,
+      "last_time": 1792833104.4438775
+    },
+    "MOLECULE": {
+      "last_used_test": 10,
+      "usage_count": 1,
+      "last_time": 1792833104.5727956
+    },
+    "TRADITION": {
+      "last_used_test": 8,
+      "usage_count": 1,
+      "last_time": 1792833126.5046837
+    },
+    "MERIDIAN": {
+      "last_used_test": 8,
+      "usage_count": 1,
+      "last_time": 1792833126.639587
+    },
+    "RIVER": {
+      "last_used_test": 8,
+      "usage_count": 1,
+      "last_time": 1792833144.4820344
+    },
+    "METABOLISM": {
+      "last_used_test": 8,
+      "usage_count": 1,
+      "last_time": 1792833144.603238
+    },
+    "COMMANDER": {
+      "last_used_test": 9,
+      "usage_count": 1,
+      "last_time": 1792833178.3480992
+    },
+    "SPECTROSCOPY": {
+      "last_used_test": 9,
+      "usage_count": 1,
+      "last_time": 1792833178.4814353
+    },
+    "HELICOPTER": {
+      "last_used_test": 8,
+      "usage_count": 1,
+      "last_time": 1792833205.3255334
+    },
+    "MEDIUM": {
+      "last_used_test": 8,
+      "usage_count": 1,
+      "last_time": 1792833205.446865
+    },
+    "PROJECTOR": {
+      "last_used_test": 8,
+      "usage_count": 1,
+      "last_time": 1792844960.7437205
+    },
+    "PROPORTION": {
+      "last_used_test": 8,
+      "usage_count": 1,
+      "last_time": 1792844960.9687653
+    },
+    "ESTUARY": {
+      "last_used_test": 8,
+      "usage_count": 1,
+      "last_time": 1792845024.2884274
+    },
+    "ELECTROLYTE": {
+      "last_used_test": 8,
+      "usage_count": 1,
+      "last_time": 1792845030.1180701
+    },
+    "MAGNESIUM": {
+      "last_used_test": 8,
+      "usage_count": 1,
+      "last_time": 1792845478.7258286
+    },
+    "COURAGE": {
+      "last_used_test": 8,
+      "usage_count": 1,
+      "last_time": 1792845478.949398
+    },
+    "GUARDIAN": {
+      "last_used_test": 8,
+      "usage_count": 1,
+      "last_time": 1792845581.0292332
+    },
+    "INDUSTRY": {
+      "last_used_test": 8,
+      "usage_count": 1,
+      "last_time": 1792845581.24431
+    },
+    "LOCOMOTIVE": {
+      "last_used_test": 9,
+      "usage_count": 1,
+      "last_time": 1792845638.1868014
+    },
+    "PESTICIDE": {
+      "last_used_test": 9,
+      "usage_count": 1,
+      "last_time": 1792845638.4163594
+    }
+  },
+  "water_words": {
+    "CORE": {
+      "last_used_test": 8,
+      "usage_count": 1,
+      "last_time": 1792832027.0463574
+    },
+    "SCIENCE": {
+      "last_used_test": 8,
+      "usage_count": 1,
+      "last_time": 1792832027.1721337
+    },
+    "PARTNER": {
+      "last_used_test": 9,
+      "usage_count": 1,
+      "last_time": 1792832030.5216312
+    },
+    "NANOTECHNOLOGY": {
+      "last_used_test": 9,
+      "usage_count": 1,
+      "last_time": 1792832030.6645777
+    },
+    "PAINTER": {
+      "last_used_test": 10,
+      "usage_count": 1,
+      "last_time": 1792832033.9104593
+    },
+    "GRAVITY": {
+      "last_used_test": 10,
+      "usage_count": 1,
+      "last_time": 1792832034.0389273
+    },
+    "VECTOR": {
+      "last_used_test": 8,
+      "usage_count": 1,
+      "last_time": 1792832057.7987285
+    },
+    "LOCOMOTIVE": {
+      "last_used_test": 8,
+      "usage_count": 1,
+      "last_time": 1792832057.9301522
+    },
+    "BIOSPHERE": {
+      "last_used_test": 8,
+      "usage_count": 1,
+      "last_time": 1792832150.5141816
+    },
+    "PRINTER": {
+      "last_used_test": 8,
+      "usage_count": 1,
+      "last_time": 1792832150.6562107
+    },
+    "OSMOSIS": {
+      "last_used_test": 9,
+      "usage_count": 1,
+      "last_time": 1792832357.9013965
+    },
+    "FORCE": {
+      "last_used_test": 9,
+      "usage_count": 1,
+      "last_time": 1792832358.0691783
+    },
+    "ARCHIPELAGO": {
+      "last_used_test": 10,
+      "usage_count": 1,
+      "last_time": 1792832446.6788585
+    },
+    "HELICOPTER": {
+      "last_used_test": 10,
+      "usage_count": 1,
+      "last_time": 1792832446.8359702
+    },
+    "DATABASE": {
+      "last_used_test": 43,
+      "usage_count": 1,
+      "last_time": 1792832458.470804
+    },
+    "CENTRIFUGE": {
+      "last_used_test": 43,
+      "usage_count": 1,
+      "last_time": 1792832458.7285013
+    },
+    "DELTA": {
+      "last_used_test": 44,
+      "usage_count": 1,
+      "last_time": 1792832487.3418581
+    },
+    "GAS": {
+      "last_used_test": 44,
+      "usage_count": 1,
+      "last_time": 1792832487.5127678
+    },
+    "RIVER": {
+      "last_used_test": 8,
+      "usage_count": 1,
+      "last_time": 1792833098.232769
+    },
+    "PULLEY": {
+      "last_used_test": 8,
+      "usage_count": 1,
+      "last_time": 1792833098.3572128
+    },
+    "NUMERATOR": {
+      "last_used_test": 9,
+      "usage_count": 1,
+      "last_time": 1792833101.7535245
+    },
+    "ALTITUDE": {
+      "last_used_test": 9,
+      "usage_count": 1,
+      "last_time": 1792833101.8908439
+    },
+    "CALCULUS": {
+      "last_used_test": 10,
+      "usage_count": 1,
+      "last_time": 1792833105.12788
+    },
+    "QUALITY": {
+      "last_used_test": 10,
+      "usage_count": 1,
+      "last_time": 1792833105.2748122
+    },
+    "WAVE": {
+      "last_used_test": 8,
+      "usage_count": 1,
+      "last_time": 1792833127.1699038
+    },
+    "BIOLOGY": {
+      "last_used_test": 8,
+      "usage_count": 1,
+      "last_time": 1792833127.3021762
+    },
+    "TANGENT": {
+      "last_used_test": 8,
+      "usage_count": 1,
+      "last_time": 1792833145.1835792
+    },
+    "ZOOLOGY": {
+      "last_used_test": 8,
+      "usage_count": 1,
+      "last_time": 1792833145.3230968
+    },
+    "VERTEX": {
+      "last_used_test": 9,
+      "usage_count": 1,
+      "last_time": 1792833179.041088
+    },
+    "HERO": {
+      "last_used_test": 9,
+      "usage_count": 1,
+      "last_time": 1792833179.172649
+    },
+    "IGNEOUS": {
+      "last_used_test": 8,
+      "usage_count": 1,
+      "last_time": 1792833206.0440202
+    },
+    "TROPICS": {
+      "last_used_test": 8,
+      "usage_count": 1,
+      "last_time": 1792833206.1941037
+    },
+    "RADIUS": {
+      "last_used_test": 8,
+      "usage_count": 1,
+      "last_time": 1792844962.0268292
+    },
+    "ASTRONOMY": {
+      "last_used_test": 8,
+      "usage_count": 1,
+      "last_time": 1792844962.3761954
+    },
+    "CALCIUM": {
+      "last_used_test": 8,
+      "usage_count": 1,
+      "last_time": 1792845479.8937795
+    },
+    "NAVIGATION": {
+      "last_used_test": 8,
+      "usage_count": 1,
+      "last_time": 1792845480.133445
+    },
+    "JUDGE": {
+      "last_used_test": 8,
+      "usage_count": 1,
+      "last_time": 1792845582.4479408
+    },
+    "MOUNTAIN": {
+      "last_used_test": 8,
+      "usage_count": 1,
+      "last_time": 1792845582.6783257
+    },
+    "CARBON": {
+      "last_used_test": 9,
+      "usage_count": 1,
+      "last_time": 1792845639.4410067
+    },
+    "VERTICAL": {
+      "last_used_test": 9,
+      "usage_count": 1,
+      "last_time": 1792845639.6823907
+    }
+  },
+  "embedded_figures": {
+    "emb_trough_u": {
+      "last_used_test": 9,
+      "usage_count": 4,
+      "last_time": 1792845641.2325346
+    },
+    "emb_hex_fork": {
+      "last_used_test": 9,
+      "usage_count": 1,
+      "last_time": 1792833102.672011
+    },
+    "emb_f_stroke": {
+      "last_used_test": 10,
+      "usage_count": 1,
+      "last_time": 1792833106.0838687
+    },
+    "emb_triangle_flag": {
+      "last_used_test": 8,
+      "usage_count": 3,
+      "last_time": 1792833566.5852284
+    },
+    "emb_diagonal_cross": {
+      "last_used_test": 8,
+      "usage_count": 3,
+      "last_time": 1792833561.8776278
+    },
+    "emb_chevron_arrow": {
+      "last_used_test": 8,
+      "usage_count": 3,
+      "last_time": 1792845481.3860524
+    },
+    "emb_hook_stair": {
+      "last_used_test": 8,
+      "usage_count": 3,
+      "last_time": 1792844963.8986418
+    },
+    "emb_z_stroke": {
+      "last_used_test": 9,
+      "usage_count": 1,
+      "last_time": 1792833180.02351
+    }
+  },
+  "figure_analogy": {
+    "ana_sector_division": {
+      "last_used_test": 8,
+      "usage_count": 3,
+      "last_time": 1792845481.5145075
+    },
+    "ana_corner_attachment": {
+      "last_used_test": 9,
+      "usage_count": 1,
+      "last_time": 1792833102.8237164
+    },
+    "ana_concentric_nested": {
+      "last_used_test": 10,
+      "usage_count": 1,
+      "last_time": 1792833106.1655638
+    },
+    "ana_half_shading_invert": {
+      "last_used_test": 9,
+      "usage_count": 4,
+      "last_time": 1792845641.4081097
+    },
+    "ana_sides_plus_one": {
+      "last_used_test": 8,
+      "usage_count": 4,
+      "last_time": 1792845584.3669627
+    },
+    "ana_circle_to_square_inscribed": {
+      "last_used_test": 8,
+      "usage_count": 3,
+      "last_time": 1792833570.355122
+    },
+    "ana_triangle_diamond": {
+      "last_used_test": 8,
+      "usage_count": 3,
+      "last_time": 1792844964.0855246
+    },
+    "ana_element_multiplication": {
+      "last_used_test": 9,
+      "usage_count": 1,
+      "last_time": 1792833180.1222558
+    }
+  },
+  "dot_situation": {
+    "dot_all_three": {
+      "last_used_test": 8,
+      "usage_count": 3,
+      "last_time": 1792833574.792539
+    },
+    "dot_cir_sq_only": {
+      "last_used_test": 9,
+      "usage_count": 1,
+      "last_time": 1792833102.9493194
+    },
+    "dot_tri_only": {
+      "last_used_test": 10,
+      "usage_count": 1,
+      "last_time": 1792833106.2952735
+    },
+    "dot_sq_only": {
+      "last_used_test": 8,
+      "usage_count": 3,
+      "last_time": 1792844964.410593
+    },
+    "dot_cir_tri_only": {
+      "last_used_test": 8,
+      "usage_count": 4,
+      "last_time": 1792845584.7335193
+    },
+    "dot_cir_only": {
+      "last_used_test": 8,
+      "usage_count": 3,
+      "last_time": 1792845481.6926198
+    },
+    "dot_two_cir_and_tri": {
+      "last_used_test": 9,
+      "usage_count": 4,
+      "last_time": 1792845641.650656
+    },
+    "dot_tri_sq_only": {
+      "last_used_test": 9,
+      "usage_count": 1,
+      "last_time": 1792833180.2550206
+    }
+  },
+  "figure_series": {
+    "ser_shading_quadrants": {
+      "last_used_test": 8,
+      "usage_count": 3,
+      "last_time": 1792845481.817675
+    },
+    "ser_triangle_rotate": {
+      "last_used_test": 9,
+      "usage_count": 1,
+      "last_time": 1792833103.0427468
+    },
+    "ser_corner_dot_clockwise": {
+      "last_used_test": 10,
+      "usage_count": 1,
+      "last_time": 1792833106.3906481
+    },
+    "ser_line_addition": {
+      "last_used_test": 8,
+      "usage_count": 3,
+      "last_time": 1792845584.9011006
+    },
+    "ser_arrow_flip": {
+      "last_used_test": 9,
+      "usage_count": 3,
+      "last_time": 1792845641.8441622
+    },
+    "ser_pin_rotate_45": {
+      "last_used_test": 8,
+      "usage_count": 3,
+      "last_time": 1792844964.5915682
+    },
+    "ser_nested_polygon_sides": {
+      "last_used_test": 8,
+      "usage_count": 2,
+      "last_time": 1792833208.4994469
+    },
+    "ser_semicircle_flip": {
+      "last_used_test": 9,
+      "usage_count": 1,
+      "last_time": 1792833180.3536515
+    }
+  }
+}
